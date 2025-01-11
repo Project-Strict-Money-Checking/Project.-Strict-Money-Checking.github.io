@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal Links Example</title>
+</head>
+<body>
+    <h1>Universal Links Example</h1>
+    <p>Click the link below to open the app:</p>
+    <a id="universalLink" href="https://example.com/path/to/content">Open in App</a>
+
+    <script>
+        document.getElementById('universalLink').addEventListener('click', function(event) {
+            event.preventDefault();
+            var link = this.href;
+
+            // iOS Universal Link
+            window.location.href = link;
+
+            // Fallback if the app is not installed
+            setTimeout(function() {
+                window.location.href = 'https://example.com/fallback';
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
